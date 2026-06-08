@@ -1,5 +1,5 @@
-import Feather from '@expo/vector-icons/Feather';
-import { useState } from 'react';
+import Feather from "@expo/vector-icons/Feather";
+import { useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -8,36 +8,36 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { TabScreenWrapper } from './_layout';
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { TabScreenWrapper } from "./_layout";
 
 const COLORS = {
-  bg: '#111111',
-  card: '#1a1a1a',
-  cardDeep: '#1e1a3a',
-  purple: '#8c78ff',
-  purpleMuted: 'rgba(140,120,255,0.15)',
-  purpleBorder: 'rgba(140,120,255,0.2)',
-  green: '#50c88c',
-  greenMuted: 'rgba(80,200,140,0.12)',
-  red: '#ff6464',
-  redMuted: 'rgba(255,100,100,0.12)',
-  amber: '#f5a623',
-  amberMuted: 'rgba(245,166,35,0.12)',
-  white: '#ffffff',
-  subtext: '#888888',
-  dim: '#555555',
-  border: 'rgba(255,255,255,0.06)',
-  border2: '#2a2a2a',
+  bg: "#111111",
+  card: "#1a1a1a",
+  cardDeep: "#1e1a3a",
+  purple: "#8c78ff",
+  purpleMuted: "rgba(140,120,255,0.15)",
+  purpleBorder: "rgba(140,120,255,0.2)",
+  green: "#50c88c",
+  greenMuted: "rgba(80,200,140,0.12)",
+  red: "#ff6464",
+  redMuted: "rgba(255,100,100,0.12)",
+  amber: "#f5a623",
+  amberMuted: "rgba(245,166,35,0.12)",
+  white: "#ffffff",
+  subtext: "#888888",
+  dim: "#555555",
+  border: "rgba(255,255,255,0.06)",
+  border2: "#2a2a2a",
 };
 
 // ─── Avatar initials ────────────────────────────────────────────────────────
 function Avatar({ name, size = 56 }: { name: string; size?: number }) {
   const initials = name
-    .split(' ')
-    .map(w => w[0])
-    .join('')
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
     .toUpperCase()
     .slice(0, 2);
   return (
@@ -104,9 +104,7 @@ function Row({
         />
       ) : (
         <View style={styles.rowRight}>
-          {value ? (
-            <Text style={styles.rowValue}>{value}</Text>
-          ) : null}
+          {value ? <Text style={styles.rowValue}>{value}</Text> : null}
           {!danger && (
             <Feather name="chevron-right" size={16} color={COLORS.dim} />
           )}
@@ -124,17 +122,17 @@ function Divider() {
 // ─── Password modal (inline collapsible) ─────────────────────────────────────
 function PasswordSection() {
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState('');
-  const [next, setNext] = useState('');
-  const [confirm, setConfirm] = useState('');
+  const [current, setCurrent] = useState("");
+  const [next, setNext] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [showCurrent, setShowCurrent] = useState(false);
   const [showNext, setShowNext] = useState(false);
 
   const handleSave = () => {
     // placeholder — wire to your auth logic
-    setCurrent('');
-    setNext('');
-    setConfirm('');
+    setCurrent("");
+    setNext("");
+    setConfirm("");
     setOpen(false);
   };
 
@@ -145,7 +143,7 @@ function PasswordSection() {
         iconColor={COLORS.purple}
         iconBg={COLORS.purpleMuted}
         label="Change Password"
-        onPress={() => setOpen(v => !v)}
+        onPress={() => setOpen((v) => !v)}
       />
       {open && (
         <View style={styles.passwordForm}>
@@ -161,9 +159,9 @@ function PasswordSection() {
                 placeholder="••••••••"
                 placeholderTextColor={COLORS.dim}
               />
-              <TouchableOpacity onPress={() => setShowCurrent(v => !v)}>
+              <TouchableOpacity onPress={() => setShowCurrent((v) => !v)}>
                 <Feather
-                  name={showCurrent ? 'eye-off' : 'eye'}
+                  name={showCurrent ? "eye-off" : "eye"}
                   size={16}
                   color={COLORS.subtext}
                 />
@@ -182,9 +180,9 @@ function PasswordSection() {
                 placeholder="••••••••"
                 placeholderTextColor={COLORS.dim}
               />
-              <TouchableOpacity onPress={() => setShowNext(v => !v)}>
+              <TouchableOpacity onPress={() => setShowNext((v) => !v)}>
                 <Feather
-                  name={showNext ? 'eye-off' : 'eye'}
+                  name={showNext ? "eye-off" : "eye"}
                   size={16}
                   color={COLORS.subtext}
                 />
@@ -251,7 +249,7 @@ function ProfileEditSection({
         iconColor={COLORS.green}
         iconBg={COLORS.greenMuted}
         label="Edit Profile"
-        onPress={() => setOpen(v => !v)}
+        onPress={() => setOpen((v) => !v)}
       />
       {open && (
         <View style={styles.passwordForm}>
@@ -313,9 +311,9 @@ function ProfileEditSection({
 
 // ─── Main screen ─────────────────────────────────────────────────────────────
 export default function MoreScreen() {
-  const [name, setName] = useState('Ara Baby');
-  const [email, setEmail] = useState('ara@example.com');
-  const [username, setUsername] = useState('@arababy');
+  const [name, setName] = useState("Ara Baby");
+  const [email, setEmail] = useState("ara@example.com");
+  const [username, setUsername] = useState("@arababy");
 
   const [biometrics, setBiometrics] = useState(true);
   const [notifications, setNotifications] = useState(true);
@@ -546,7 +544,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     color: COLORS.white,
     fontSize: 28,
-    fontWeight: '700',
+    fontWeight: "700",
     letterSpacing: -0.8,
     marginTop: 16,
     marginBottom: 24,
@@ -557,27 +555,27 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.cardDeep,
     borderRadius: 20,
     padding: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 14,
     borderWidth: 1,
     borderColor: COLORS.purpleBorder,
     marginBottom: 28,
   },
   avatarCircle: {
-    backgroundColor: '#5d4fe8',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#5d4fe8",
+    alignItems: "center",
+    justifyContent: "center",
   },
   avatarText: {
     color: COLORS.white,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   profileInfo: { flex: 1 },
   profileName: {
     color: COLORS.white,
     fontSize: 17,
-    fontWeight: '700',
+    fontWeight: "700",
     letterSpacing: -0.3,
   },
   profileUsername: {
@@ -601,7 +599,7 @@ const styles = StyleSheet.create({
   memberBadgeText: {
     color: COLORS.purple,
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: "700",
     letterSpacing: 1,
   },
 
@@ -609,7 +607,7 @@ const styles = StyleSheet.create({
   sectionLabel: {
     color: COLORS.dim,
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: "600",
     letterSpacing: 1,
     marginBottom: 10,
     marginLeft: 4,
@@ -622,13 +620,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     marginBottom: 20,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
 
   // Row
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 14,
     gap: 12,
@@ -637,18 +635,18 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 9,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   rowLabel: {
     flex: 1,
     color: COLORS.white,
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   rowRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 6,
   },
   rowValue: {
@@ -674,12 +672,12 @@ const styles = StyleSheet.create({
     color: COLORS.subtext,
     fontSize: 11,
     letterSpacing: 0.5,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   inputRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#111111',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#111111",
     borderRadius: 10,
     borderWidth: 1,
     borderColor: COLORS.border2,
@@ -692,7 +690,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   passwordActions: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 10,
     marginTop: 4,
   },
@@ -702,30 +700,30 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border2,
     paddingVertical: 11,
-    alignItems: 'center',
+    alignItems: "center",
   },
   cancelBtnText: {
     color: COLORS.subtext,
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   saveBtn: {
     flex: 1,
     borderRadius: 10,
     backgroundColor: COLORS.purple,
     paddingVertical: 11,
-    alignItems: 'center',
+    alignItems: "center",
   },
   saveBtnText: {
     color: COLORS.white,
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: "700",
   },
 
   version: {
     color: COLORS.dim,
     fontSize: 12,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 8,
   },
 });
